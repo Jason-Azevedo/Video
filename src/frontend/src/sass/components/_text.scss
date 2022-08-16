@@ -1,0 +1,35 @@
+.text {
+  color: var(--color-text);
+
+  &--18 {
+    @extend .text;
+    font-size: 1.125rem;
+  }
+
+  &--16 {
+    @extend .text;
+    font-size: 1rem;
+  }
+
+  &--14 {
+    @extend .text;
+    font-size: 0.875rem;
+  }
+
+  &--12 {
+    @extend .text;
+    font-size: 0.75rem;
+  }
+
+  &.semi-bold {
+    font-weight: 600;
+  }
+
+  &.bright {
+    color: var(--color-text-bright);
+  }
+
+  &.dim {
+    color: var(--color-text-dim);
+  }
+}

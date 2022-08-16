@@ -1,0 +1,58 @@
+.nav {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  &,
+  &-brand,
+  &-search-icon,
+  &-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &-search-icon {
+    cursor: pointer;
+    padding: 0.5rem 0.7rem;
+  }
+
+  &-searchbar {
+    display: inline-flex;
+    width: 100%;
+  }
+
+  &-icons {
+    position: relative;
+    gap: 0.2rem;
+  }
+
+  & .floating-menu {
+    max-width: 400px;
+    width: 80vw;
+  }
+
+  &-container {
+    background: var(--color-middleground);
+  }
+}
+
+// Laptops and up
+@media only screen and (min-width: $tablet-max-screen-width) {
+  .nav {
+    & .hide {
+      display: flex;
+    }
+
+    &-searchbar {
+      width: 40%;
+    }
+
+    &-icons {
+      gap: 0.8rem;
+    }
+
+    &-searchbar > .button--icon,
+    &-search-icon {
+      display: none;
+    }
+  }
+}

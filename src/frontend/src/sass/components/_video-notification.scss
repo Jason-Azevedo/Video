@@ -1,0 +1,35 @@
+.video-notification {
+  display: flex;
+  text-decoration: none;
+  gap: 1rem;
+
+  &-channel-image,
+  &-video-thumbnail {
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  &-channel-image {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+  &-video-thumbnail {
+    width: 4.5rem;
+    height: 3rem;
+  }
+
+  &-content {
+    flex-basis: 1;
+
+    & span {
+      display: block;
+      line-height: 1.125rem;
+    }
+  }
+
+  &-channel-name {
+    margin: 0.5rem 0 0.1rem 0;
+  }
+}

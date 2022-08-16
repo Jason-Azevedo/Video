@@ -1,0 +1,65 @@
+@import "base/includes";
+@import "components/includes";
+@import "utils/includes";
+
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  // lightmode variables
+  --color-foreground: #{$color-foreground-light};
+  --color-middleground: #{$color-middleground-light};
+  --color-background: #{$color-background-light};
+
+  --color-text: #{$color-text-light};
+  --color-text-dim: #{$color-text-light-dim};
+  --color-text-bright: #{$color-text-light-bright};
+  --color-text-brighter: #{$color-text-light-brighter};
+  --color-text-input: #{$color-text-light-input};
+
+  --color-border: #{$color-border-light};
+
+  // darkmode variables
+  &.dark {
+    --color-foreground: #{$color-foreground-dark};
+    --color-middleground: #{$color-middleground-dark};
+    --color-background: #{$color-background-dark};
+
+    --color-text: #{$color-text-dark};
+    --color-text-dim: #{$color-text-dark-dim};
+    --color-text-bright: #{$color-text-dark-dimmer};
+    --color-text-brighter: #{$color-text-dark-dark};
+    --color-text-input: #{$color-text-dark-input};
+
+    --color-border: #{$color-border-dark};
+  }
+
+  background-color: var(--color-background);
+
+  // Primary color theme variables
+  &.blue {
+    --color-primary: #{$color-primary-blue};
+    --color-primary-disabled: #{$color-primary-blue-disabled};
+    --color-primary-disabled-darker: #{$color-primary-blue-disabled-darker};
+    --color-primary-active: #{$color-primary-blue-active};
+  }
+
+  &.orange {
+    --color-primary: #{$color-primary-orange};
+    --color-primary-disabled: #{$color-primary-orange-disabled};
+    --color-primary-disabled-darker: #{$color-primary-orange-disabled-darker};
+    --color-primary-active: #{$color-primary-orange-active};
+  }
+
+  &.purple {
+    --color-primary: #{$color-primary-purple};
+    --color-primary-disabled: #{$color-primary-purple-disabled};
+    --color-primary-disabled-darker: #{$color-primary-purple-disabled-darker};
+    --color-primary-active: #{$color-primary-purple-active};
+  }
+}

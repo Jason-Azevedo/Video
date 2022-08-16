@@ -1,0 +1,30 @@
+.toggle {
+  position: relative;
+  height: 0.7rem;
+  width: 2rem;
+  border-radius: 5px;
+  background-color: var(--color-primary-disabled-darker);
+  cursor: pointer;
+
+  &-circle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    width: 1.1rem;
+    height: 1.1rem;
+    background: var(--color-primary-disabled);
+    border-radius: 25%;
+    transition: 0.2s;
+  }
+
+  &.toggled {
+    background-color: var(--color-primary-active);
+
+    .toggle-circle {
+      left: 50%;
+      background-color: var(--color-primary);
+    }
+  }
+}

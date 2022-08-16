@@ -1,0 +1,32 @@
+.theme-color-selector {
+  &-colors {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: .5rem 0 1rem 0;
+  }
+
+  &-color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    &.blue {
+      background-color: $color-primary-blue;
+    }
+
+    &.orange {
+      background-color: $color-primary-orange;
+    }
+
+    &.purple {
+      background-color: $color-primary-purple;
+    }
+  }
+}

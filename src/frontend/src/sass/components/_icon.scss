@@ -1,0 +1,38 @@
+.icon {
+  display: inline-block;
+  fill: var(--color-primary);
+
+  &--48 {
+    @extend .icon;
+    width: 48px;
+    height: 48px;
+  }
+
+  &--32 {
+    @extend .icon;
+    width: 32px;
+    height: 32px;
+  }
+
+  &--24 {
+    @extend .icon;
+    width: 24px;
+    height: 24px;
+  }
+
+  &--18 {
+    @extend .icon;
+    width: 18px;
+    height: 18px;
+  }
+
+  &--16 {
+    @extend .icon;
+    width: 16px;
+    height: 16px;
+  }
+
+  &.white {
+    fill: white;
+  }
+}

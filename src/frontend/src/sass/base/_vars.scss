@@ -1,0 +1,50 @@
+/* COLORS */
+
+$color-primary-blue: #1da7f0;
+$color-primary-blue-disabled: #1470a1;
+$color-primary-blue-disabled-darker: #205574;
+$color-primary-blue-active: #157cb4;
+
+$color-primary-purple: #d54aff;
+$color-primary-purple-disabled: #792c91;
+$color-primary-purple-disabled-darker: #735192;
+$color-primary-purple-active: #8c35a7;
+
+$color-primary-orange: #ff6e00;
+$color-primary-orange-disabled: #b95c0f;
+$color-primary-orange-disabled-darker: #7a4519;
+$color-primary-orange-active: #c05b18;
+
+/* THEME COLORS */
+
+// Lightmode
+$color-foreground-light: #fff;
+$color-middleground-light: #f5f5f5;
+$color-background-light: #eeeeee;
+
+$color-text-light: #333;
+$color-text-light-dim: #555;
+$color-text-light-bright: #747474;
+$color-text-light-brighter: #919191;
+$color-text-light-input: #444;
+
+$color-border-light: #cecece;
+
+// Darkmode
+$color-foreground-dark: #2c2c2c;
+$color-middleground-dark: #242424;
+$color-background-dark: #1b1b1b;
+
+$color-text-dark: #fff;
+$color-text-dark-dim: #e2e2e2;
+$color-text-dark-dimmer: #9b9b9b;
+$color-text-dark-dark: #575757;
+$color-text-dark-input: #dfdfdf;
+
+$color-border-dark: #919191;
+
+/* RESPONSIVE */
+$mobile-max-screen-width: 480px;
+$tablet-max-screen-width: 768px;
+$laptop-max-screen-width: 1024px;
+$desktop-max-screen-width: 1200px;

@@ -1,0 +1,29 @@
+.account-settings-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  &-profile-image {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &-username,
+  &-email {
+    display: block;
+  }
+
+  &-username {
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  &-email {
+    color: var(--color-primary);
+    font-weight: 300;
+    font-size: 0.9rem;
+  }
+}
