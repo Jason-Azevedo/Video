@@ -32,4 +32,8 @@
   &.dim {
     color: var(--color-text-dim);
   }
+
+  &.center-text {
+    text-align: center;
+  }
 }

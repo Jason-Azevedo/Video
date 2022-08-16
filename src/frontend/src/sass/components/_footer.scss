@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  &-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  &-container {
+    background-color: var(--color-middleground);
+    padding-bottom: 1rem;
+  }
+  &-section {
+    margin: 0.5rem;
+  }
+
+  &-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    gap: 1rem;
+  }
+}

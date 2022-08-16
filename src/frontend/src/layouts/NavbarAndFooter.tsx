@@ -8,7 +8,11 @@ export function withNavbarAndFooter<P>(Body: React.ComponentType<P>): Function {
     return (
       <>
         <Navbar />
-        <Body {...props} />
+
+        <main className="main">
+          <Body {...props} />
+        </main>
+
         <Footer />
       </>
     );

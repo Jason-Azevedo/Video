@@ -12,6 +12,11 @@
     font-size: 0.875rem;
   }
 
+  &--16 {
+    @extend .title;
+    font-size: 1rem;
+  }
+
   &--18 {
     @extend .title;
     font-size: 1.125rem;
@@ -33,5 +38,9 @@
 
   &.dim {
     color: var(--color-text-dim);
+  }
+
+  &.text-center {
+    text-align: center;
   }
 }
