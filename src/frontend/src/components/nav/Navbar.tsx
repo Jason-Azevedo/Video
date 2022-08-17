@@ -13,7 +13,7 @@ export function Navbar() {
   const toggleSearchbar = () => showSearchbar((prev) => !prev);
 
   return (
-    <nav className="nav-container">
+    <header className="nav-container">
       <div className="nav container--1200">
         <div className={`nav-brand ${searching ? "hide" : ""}`}>
           <Logo className="icon--24" />
@@ -37,7 +37,7 @@ export function Navbar() {
           <KebabMenu />
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
 

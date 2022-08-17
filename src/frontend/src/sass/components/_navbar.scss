@@ -34,6 +34,7 @@
   &-container {
     position: fixed;
     top: 0;
+    z-index: 1000; // Display over anything else.
 
     width: 100%;
     background: var(--color-middleground);

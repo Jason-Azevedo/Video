@@ -7,6 +7,11 @@
     font-weight: 400;
   }
 
+  &--12 {
+    @extend .title;
+    font-size: 0.75rem;
+  }
+
   &--14 {
     @extend .title;
     font-size: 0.875rem;
