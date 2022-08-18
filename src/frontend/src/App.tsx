@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import Home from "./pages/Home";
 import Watch from "./pages/Watch";
 import SearchResults from "./pages/SearchResults";
+import NavbarFooterLayout from "./layouts/NavbarAndFooter";
 import { RootState } from "./redux/store";
 import { ColorThemes } from "./features/theme/colorThemeSlice";
 
@@ -43,9 +44,18 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/watch" element={<Watch />} />
-        <Route path="/search" element={<SearchResults />} />
+        {/* Navbar and Footer layout */}
+        <Route path="/" element={<NavbarFooterLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/watch" element={<Watch />} />
+          <Route path="/search" element={<SearchResults />} />
+        </Route>
+
+        {/* Routes with no layout */}
+        <Route
+          path="/account"
+          element={<p>There should be no navbar or footer</p>}
+        />
       </Routes>
     </BrowserRouter>
   );

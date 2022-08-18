@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import SearchBar from "../inputs/SearchBar";
 import KebabMenu from "./KebabMenu";
@@ -15,10 +16,19 @@ export interface INavbarOverlay {
 export function Navbar() {
   const [isOverlay, setIsOverlay] = useState(false);
   const [searching, showSearchbar] = useState(false);
+  const navigate = useNavigate();
+
   const toggleSearchbar = () => showSearchbar((prev) => !prev);
 
   const toggleOverlay = () => {
     setIsOverlay((prev) => !prev);
+  };
+
+  const onSearch = (query: String) => {
+    if (query === "") return; // Don't search empty string
+
+    toggleSearchbar();
+    navigate({ pathname: "/search", search: `?q=${query}` });
   };
 
   return (
@@ -35,7 +45,7 @@ export function Navbar() {
               <XMarkIcon className="icon--18" />
             </button>
 
-            <SearchBar onSearch={console.log} />
+            <SearchBar onSearch={onSearch} />
           </div>
 
           <div className={`nav-icons ${searching ? "hide" : ""}`}>

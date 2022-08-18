@@ -1,7 +1,6 @@
 import React from "react";
 
 import VideoCard from "../components/VideoCard";
-import withNavbarAndFooter from "../layouts/NavbarAndFooter";
 
 const tempVideoInfo = {
   id: "fadjfladjfalkdj",
@@ -25,4 +24,4 @@ export function Home() {
   return <div className="video-card-container container">{videos}</div>;
 }
 
-export default withNavbarAndFooter<HomeProps>(Home);
+export default Home;

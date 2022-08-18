@@ -1,22 +1,21 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 import Navbar from "../components/nav/Navbar";
 import Footer from "../components/nav/Footer";
 
-export function withNavbarAndFooter<P>(Body: React.ComponentType<P>): Function {
-  return (props: P) => {
-    return (
-      <>
-        <Navbar />
+export function NavbarFooterLayout() {
+  return (
+    <>
+      <Navbar />
 
-        <main className="main">
-          <Body {...props} />
-        </main>
+      <main className="main">
+        <Outlet />
+      </main>
 
-        <Footer />
-      </>
-    );
-  };
+      <Footer />
+    </>
+  );
 }
 
-export default withNavbarAndFooter;
+export default NavbarFooterLayout;
