@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as UserIcon } from "../assets/svg/user.svg";
 
 // TODO: This default image must be fetched from backend
-import defaultProfileImage from "../assets/imgs/default-user-profile.jpg";
+import defaultProfileImage from "../../assets/imgs/default-user-profile.jpg";
 
 export function AccountSettingsLink() {
   // Fetch this from redux context

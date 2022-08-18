@@ -1,8 +1,8 @@
 import React from "react";
 
 import NavbarMenu from "./NavbarMenu";
-import AccountSettingsLink from "../AccountSettingsLink";
-import MenuItem from "../MenuItem";
+import AccountSettingsLink from "./AccountSettingsLink";
+import MenuItem from "./MenuItem";
 import DarkModeToggle from "../DarkModeToggle";
 import ThemeColorSelector from "../ThemeColorSelector";
 

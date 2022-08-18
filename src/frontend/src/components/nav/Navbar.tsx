@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import SearchBar from "../SearchBar";
+import SearchBar from "../inputs/SearchBar";
 import KebabMenu from "./KebabMenu";
 import NotificationsMenu from "./NotificationsMenu";
 

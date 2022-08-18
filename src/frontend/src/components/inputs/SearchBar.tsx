@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { ReactComponent as MagnifyingGlassIcon } from "../assets/svg/magnifying-glass.svg";
+import { ReactComponent as MagnifyingGlassIcon } from "../../assets/svg/magnifying-glass.svg";
 
 interface ISearchBarProps {
   onSearch: (query: String) => any;

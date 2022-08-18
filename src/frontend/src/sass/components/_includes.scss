@@ -1,20 +1,12 @@
-@import "navbar";
+@import "./general/includes";
+@import "./nav/includes";
+
 @import "icon";
-@import "title";
 @import "searchbar";
 @import "floating-menu";
-@import "link";
-@import "button";
-@import "navbar-menu";
 @import "account-settings-link";
-@import "menu-item";
-@import "text";
-@import "hr";
 @import "dark-mode-toggle";
 @import "toggle";
 @import "theme-color-selector";
-@import "notification-menu";
 @import "video-notification";
-@import "footer";
 @import "video-card";
-@import "image";
