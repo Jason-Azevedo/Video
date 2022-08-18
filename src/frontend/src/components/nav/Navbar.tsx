@@ -18,14 +18,7 @@ export function Navbar() {
   const toggleSearchbar = () => showSearchbar((prev) => !prev);
 
   const toggleOverlay = () => {
-    setIsOverlay((prev) => {
-      const bodyStyle = document.body.style;
-
-      if (!prev) bodyStyle.overflow = "hidden";
-      else bodyStyle.overflow = "";
-
-      return !prev;
-    });
+    setIsOverlay((prev) => !prev);
   };
 
   return (
