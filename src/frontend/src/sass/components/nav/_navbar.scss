@@ -39,6 +39,21 @@
     width: 100%;
     background: var(--color-middleground);
   }
+
+  &-overlay {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+
+    width: 100vw;
+    height: calc(100% - 4rem);
+    background: #00000075;
+    z-index: 900;
+
+    &.hidden {
+      display: none;
+    }
+  }
 }
 
 // Laptops and up

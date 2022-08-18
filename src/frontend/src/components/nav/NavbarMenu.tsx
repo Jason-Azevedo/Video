@@ -4,10 +4,15 @@ import { FloatingMenu } from "../FloatingMenu";
 
 interface INavbarMenuProps {
   icon: ReactNode;
+  toggleOverlay: Function;
   children: ReactNode;
 }
 
-export function NavbarMenu({ icon, children }: INavbarMenuProps) {
+export function NavbarMenu({
+  icon,
+  children,
+  toggleOverlay,
+}: INavbarMenuProps) {
   const [isShowing, showMenu] = useState(false);
 
   const iconRef = useRef<HTMLDivElement>(null);
@@ -16,6 +21,7 @@ export function NavbarMenu({ icon, children }: INavbarMenuProps) {
     // Hide the menu if the user did not click the bell
     if (!iconRef.current?.contains(event.target as Node)) {
       showMenu(false);
+      toggleOverlay();
     }
   };
 
@@ -24,7 +30,10 @@ export function NavbarMenu({ icon, children }: INavbarMenuProps) {
       <div
         className="navbar-menu-icon"
         ref={iconRef}
-        onClick={() => showMenu((prev) => !prev)}
+        onClick={() => {
+          showMenu((prev) => !prev);
+          toggleOverlay();
+        }}
       >
         {icon}
       </div>

@@ -5,6 +5,7 @@ import AccountSettingsLink from "./AccountSettingsLink";
 import MenuItem from "./MenuItem";
 import DarkModeToggle from "../DarkModeToggle";
 import ThemeColorSelector from "../ThemeColorSelector";
+import { INavbarOverlay } from "./Navbar";
 
 import { ReactComponent as EllipsisIcon } from "../../assets/svg/ellipsis-vertical.svg";
 import { ReactComponent as HouseIcon } from "../../assets/svg/house.svg";
@@ -14,9 +15,12 @@ import { ReactComponent as ListUlIcon } from "../../assets/svg/list-ul.svg";
 import { ReactComponent as CameraIcon } from "../../assets/svg/camera.svg";
 import { ReactComponent as GearIcon } from "../../assets/svg/gear.svg";
 
-export function KebabMenu() {
+export function KebabMenu({ toggleOverlay }: INavbarOverlay) {
   return (
-    <NavbarMenu icon={<EllipsisIcon className="icon--18" />}>
+    <NavbarMenu
+      icon={<EllipsisIcon className="icon--18" />}
+      toggleOverlay={toggleOverlay}
+    >
       <AccountSettingsLink />
 
       <hr className="hr" />
