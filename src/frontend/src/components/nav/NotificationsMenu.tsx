@@ -12,11 +12,15 @@ export function NotificationsMenu({ toggleOverlay }: INavbarOverlay) {
   // Get this from the server
   const notifications = data.map((e, i) => <VideoNotification key={i} />);
 
+  const bellIcon = (
+    <div className="notification-menu-icon">
+      <BellIcon className="icon--18" />
+      <span className="text--14 semi-bold">{data.length}</span>
+    </div>
+  );
+
   return (
-    <NavbarMenu
-      icon={<BellIcon className="icon--18" />}
-      toggleOverlay={toggleOverlay}
-    >
+    <NavbarMenu icon={bellIcon} toggleOverlay={toggleOverlay}>
       {notifications ? (
         <div className="notification-menu-notifications">{notifications}</div>
       ) : (
