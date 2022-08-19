@@ -1,7 +1,6 @@
 import React from "react";
 
 import VideoCard from "../components/VideoCard";
-import scroll from "../utils/scroll";
 
 const tempVideoInfo = {
   id: "fadjfladjfalkdj",
@@ -18,8 +17,6 @@ const tempVideoInfo = {
 export interface HomeProps {}
 
 export function Home() {
-  scroll.resetPos();
-
   const videoData = Array(5).fill(tempVideoInfo);
 
   const videos = videoData.map((e) => <VideoCard videoInfo={e} />);

@@ -1,0 +1,16 @@
+.pagination {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.3rem;
+
+  & .link {
+    display: flex;
+    align-items: center;
+  }
+}

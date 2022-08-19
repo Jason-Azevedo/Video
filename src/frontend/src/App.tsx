@@ -4,9 +4,11 @@ import { useSelector } from "react-redux";
 
 import Home from "./pages/Home";
 import Watch from "./pages/Watch";
-import SearchResults from "./pages/SearchResults";
+import Search from "./pages/Search";
 import NavbarFooterLayout from "./layouts/NavbarAndFooter";
 import NavbarLayout from "./layouts/Navbar";
+import FooterLayout from "./layouts/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import { RootState } from "./redux/store";
 import { ColorThemes } from "./features/theme/colorThemeSlice";
 
@@ -44,23 +46,22 @@ function App() {
 
   return (
     <BrowserRouter>
+      {/* Automatically scroll to top when changing pages */}
+      <ScrollToTop />
+
       <Routes>
-        {/* Navbar only */}
+        {/* Routes with navbar only */}
         <Route path="/" element={<NavbarLayout />}>
           <Route index element={<Home />} />
           <Route path="/watch" element={<Watch />} />
+
+          {/* Routes with navbar and footer */}
+          <Route path="/" element={<FooterLayout />}>
+            <Route path="/search" element={<Search />} />
+          </Route>
         </Route>
 
-        {/* Navbar and Footer layout */}
-        <Route path="/" element={<NavbarFooterLayout />}>
-          <Route path="/search" element={<SearchResults />} />
-        </Route>
-
-        {/* Routes with no layout */}
-        <Route
-          path="/account"
-          element={<p>There should be no navbar or footer</p>}
-        />
+        {/* Elements with no navbar or footer */}
       </Routes>
     </BrowserRouter>
   );

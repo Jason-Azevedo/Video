@@ -1,4 +1,19 @@
 .link {
   color: var(--color-primary);
   text-decoration: none;
+
+  &--18 {
+    @extend .link;
+    font-size: 1.125rem;
+  }
+
+  &.bold {
+    @extend .link;
+    font-weight: 700;
+  }
+
+  &.disabled {
+    @extend .link;
+    color: var(--color-primary-disabled);
+  }
 }

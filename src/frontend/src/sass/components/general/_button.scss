@@ -1,4 +1,9 @@
 .button {
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: var(--color-primary);
+  text-decoration: none;
+
   &--icon {
     display: flex;
     align-items: center;
