@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import NavbarMenu from "./NavbarMenu";
 import AccountSettingsLink from "./AccountSettingsLink";
@@ -16,32 +16,51 @@ import { ReactComponent as CameraIcon } from "../../assets/svg/camera.svg";
 import { ReactComponent as GearIcon } from "../../assets/svg/gear.svg";
 
 export function KebabMenu({ toggleOverlay }: INavbarOverlay) {
+  const [isShowing, showMenu] = useState(false);
+
+  const toggleMenu = () => {
+    toggleOverlay();
+    showMenu((prev) => !prev);
+  };
+
   return (
     <NavbarMenu
       icon={<EllipsisIcon className="icon--18" />}
-      toggleOverlay={toggleOverlay}
+      toggleMenu={toggleMenu}
+      show={isShowing}
     >
       <AccountSettingsLink />
 
       <hr className="hr" />
 
-      <MenuItem to="/" text="Home" icon={<HouseIcon className="icon--24" />} />
-      <MenuItem
-        to="/following"
-        text="Following"
-        icon={<ShieldDogIcon className="icon--24" />}
-      />
-      <MenuItem to="/" text="Saved" icon={<ClockIcon className="icon--24" />} />
-      <MenuItem
-        to="/"
-        text="Playlists"
-        icon={<ListUlIcon className="icon--24" />}
-      />
-      <MenuItem
-        to="/"
-        text="My Videos"
-        icon={<CameraIcon className="icon--24" />}
-      />
+      {/* Navigation Links */}
+      <div onClick={toggleMenu}>
+        <MenuItem
+          to="/"
+          text="Home"
+          icon={<HouseIcon className="icon--24" />}
+        />
+        <MenuItem
+          to="/following"
+          text="Following"
+          icon={<ShieldDogIcon className="icon--24" />}
+        />
+        <MenuItem
+          to="/"
+          text="Saved"
+          icon={<ClockIcon className="icon--24" />}
+        />
+        <MenuItem
+          to="/"
+          text="Playlists"
+          icon={<ListUlIcon className="icon--24" />}
+        />
+        <MenuItem
+          to="/"
+          text="My Videos"
+          icon={<CameraIcon className="icon--24" />}
+        />
+      </div>
 
       <hr className="hr" />
 

@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Watch from "./pages/Watch";
 import SearchResults from "./pages/SearchResults";
 import NavbarFooterLayout from "./layouts/NavbarAndFooter";
+import NavbarLayout from "./layouts/Navbar";
 import { RootState } from "./redux/store";
 import { ColorThemes } from "./features/theme/colorThemeSlice";
 
@@ -44,10 +45,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Navbar and Footer layout */}
-        <Route path="/" element={<NavbarFooterLayout />}>
+        {/* Navbar only */}
+        <Route path="/" element={<NavbarLayout />}>
           <Route index element={<Home />} />
           <Route path="/watch" element={<Watch />} />
+        </Route>
+
+        {/* Navbar and Footer layout */}
+        <Route path="/" element={<NavbarFooterLayout />}>
           <Route path="/search" element={<SearchResults />} />
         </Route>
 

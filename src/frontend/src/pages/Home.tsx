@@ -1,6 +1,7 @@
 import React from "react";
 
 import VideoCard from "../components/VideoCard";
+import scroll from "../utils/scroll";
 
 const tempVideoInfo = {
   id: "fadjfladjfalkdj",
@@ -17,11 +18,18 @@ const tempVideoInfo = {
 export interface HomeProps {}
 
 export function Home() {
-  const videoData = Array(15).fill(tempVideoInfo);
+  scroll.resetPos();
+
+  const videoData = Array(5).fill(tempVideoInfo);
 
   const videos = videoData.map((e) => <VideoCard videoInfo={e} />);
 
-  return <div className="video-card-container container">{videos}</div>;
+  return (
+    <div className="video-card-container container">
+      {videos}
+      {/* Loading spinner to fetch more videos */}
+    </div>
+  );
 }
 
 export default Home;

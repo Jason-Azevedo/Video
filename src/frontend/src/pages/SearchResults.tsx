@@ -1,7 +1,11 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 
+import scroll from "../utils/scroll";
+
 export function SearchResults() {
+  scroll.resetPos(); 
+
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
 

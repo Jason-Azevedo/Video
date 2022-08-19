@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SearchBar from "../inputs/SearchBar";
 import KebabMenu from "./KebabMenu";
 import NotificationsMenu from "./NotificationsMenu";
+import scroll from "../../utils/scroll";
 
 import { ReactComponent as Logo } from "../../assets/svg/brand-icon.svg";
 import { ReactComponent as MagnifyingGlassIcon } from "../../assets/svg/magnifying-glass.svg";
@@ -21,7 +22,12 @@ export function Navbar() {
   const toggleSearchbar = () => showSearchbar((prev) => !prev);
 
   const toggleOverlay = () => {
-    setIsOverlay((prev) => !prev);
+    setIsOverlay((prev) => {
+      if (!prev) scroll.disable();
+      else scroll.enable();
+
+      return !prev;
+    });
   };
 
   const onSearch = (query: String) => {
