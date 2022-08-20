@@ -1,32 +1,47 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import defaultProfileImage from "../../assets/imgs/default-user-profile.jpg";
+import truncateText from "../../utils/truncateText";
+import getPostedAgo from "../../utils/getPostedAgo";
 
-export function VideoNotification() {
+export interface IVideoNotification {
+  channelImageUrl: string;
+  thumbnailUrl: string;
+  title: string;
+  channelName: string;
+  datePosted: number;
+}
+
+interface IVideoNotificationProps {
+  data: IVideoNotification;
+}
+
+export function VideoNotification({ data }: IVideoNotificationProps) {
   return (
     <Link to="/" className="video-notification">
       {/* Channel image */}
       <img
         className="video-notification-channel-image"
-        src={defaultProfileImage}
+        src={data.channelImageUrl}
       />
 
       {/* Content */}
       <div className="video-notification-content">
-        <span className="text--16 ellipsis">
-          Hiking through the mountains forever
+        <span className="video-notification-title text--16 ellipsis">
+          {truncateText(data.title, 49)}
         </span>
-        <span className="video-notification-channel-name text--14 semi-bold dim">
-          Jeffrey Beyzos
+        <span className="video-notification-channel text--14 semi-bold dim">
+          {truncateText(data.channelName, 34)}
         </span>
-        <span className="text--12 semi-bold bright">22 hours ago</span>
+        <span className="video-notification-time text--12 semi-bold bright">
+          {getPostedAgo(data.datePosted)}
+        </span>
       </div>
 
       {/* Video thumbnail */}
       <img
         className="video-notification-video-thumbnail"
-        src={defaultProfileImage}
+        src={data.thumbnailUrl}
       />
     </Link>
   );

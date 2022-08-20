@@ -10,23 +10,29 @@
   }
 
   &-channel-image {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
   }
 
   &-video-thumbnail {
-    width: 4.5rem;
-    height: 3rem;
+    width: 5.5rem;
+    height: 3.5rem;
+  }
+
+  &-channel {
+    margin: .5rem 0 .4rem 0;
+  }
+
+  &-title,
+  &-channel,
+  &-time {
+    display: block;
+    line-height: 1.125rem;
   }
 
   &-content {
     flex-basis: 1;
-
-    & span {
-      display: block;
-      line-height: 1.125rem;
-    }
   }
 
   &-channel-name {
