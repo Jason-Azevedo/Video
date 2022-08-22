@@ -1,4 +1,5 @@
 import React from "react";
+import { Spinner } from "../components/Spinner";
 
 import VideoCard from "../components/VideoCard";
 import IVideo from "../interfaces/video";
@@ -25,9 +26,10 @@ export function Home() {
   const videos = videoData.map((e) => <VideoCard video={e} />);
 
   return (
-    <div className="home-content container">
-      {videos}
-      {/* Loading spinner to fetch more videos */}
+    <div className="home">
+      <div className="home-content container">{videos}</div>
+
+      <Spinner />
     </div>
   );
 }
