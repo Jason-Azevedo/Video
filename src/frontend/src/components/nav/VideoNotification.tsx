@@ -28,10 +28,10 @@ export function VideoNotification({ data }: IVideoNotificationProps) {
       {/* Content */}
       <div className="video-notification-content">
         <span className="video-notification-title text--16 ellipsis">
-          {truncateText(data.title, 49)}
+          {truncateText(data.title, 55)}
         </span>
         <span className="video-notification-channel text--14 semi-bold dim">
-          {truncateText(data.channelName, 34)}
+          {truncateText(data.channelName, 23)}
         </span>
         <span className="video-notification-time text--12 semi-bold bright">
           {getPostedAgo(data.datePosted)}

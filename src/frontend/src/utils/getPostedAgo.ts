@@ -13,8 +13,6 @@ export default function getPostedAgo(postedTime: number) {
   const currentTime = new Date().getTime() / 1000;
   const timeDiff = currentTime - postedTime;
 
-  console.log("time diff: " + timeDiff);
-
   // All these variables are in seconds
   const year = 31536000;
   const month = 2628288;
