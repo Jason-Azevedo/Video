@@ -10,7 +10,14 @@
   margin: 0;
   box-sizing: border-box;
   outline: none;
+  transition: 0.5s;
 }
+
+a {
+  text-decoration: none;
+}
+
+// TODO: Replace the 800 variables with scss magic
 
 body {
   // lightmode variables

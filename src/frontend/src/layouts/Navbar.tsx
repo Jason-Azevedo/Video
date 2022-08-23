@@ -8,9 +8,7 @@ export function NavbarLayout() {
     <>
       <Navbar />
 
-      <main className="main">
-        <Outlet />
-      </main>
+      <Outlet />
     </>
   );
 }

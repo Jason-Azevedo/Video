@@ -7,6 +7,7 @@ import Watch from "./pages/Watch";
 import Search from "./pages/Search";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Following from "./pages/Following";
 import NavbarLayout from "./layouts/Navbar";
 import FooterLayout from "./layouts/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -59,6 +60,7 @@ function App() {
           {/* Routes with navbar and footer */}
           <Route path="/" element={<FooterLayout />}>
             <Route path="/search" element={<Search />} />
+            <Route path="/following" element={<Following />} />
           </Route>
         </Route>
 

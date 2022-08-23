@@ -7,8 +7,8 @@ import { ReactComponent as InstagramIcon } from "../../assets/svg/instagram.svg"
 
 export function Footer() {
   return (
-    <div className="footer-container">
-      <footer className="footer container">
+    <footer className="footer-container">
+      <div className="footer container">
         {/* Icon and Vidio */}
         <div className="footer-brand">
           <Logo className="icon--24" />
@@ -71,8 +71,8 @@ export function Footer() {
         <p className="text--16 center-text bright">
           Vidio &copy; {new Date().getFullYear()}
         </p>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 }
 

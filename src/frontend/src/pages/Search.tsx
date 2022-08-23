@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 import CompactVideo from "../components/CompactVideo";
 import Pagination from "../components/nav/Pagination";
+import withPage from "../wrappers/withPage";
 import { useScreenSize } from "../hooks/useScreenSize";
 import IVideo from "../interfaces/video";
 
@@ -40,4 +41,4 @@ export function SearchResults() {
   );
 }
 
-export default SearchResults;
+export default withPage(SearchResults);

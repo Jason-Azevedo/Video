@@ -1,6 +1,7 @@
 import React from "react";
 import { Spinner } from "../components/Spinner";
 
+import withPage from "../wrappers/withPage";
 import VideoCard from "../components/VideoCard";
 import IVideo from "../interfaces/video";
 
@@ -34,4 +35,4 @@ export function Home() {
   );
 }
 
-export default Home;
+export default withPage(Home);
