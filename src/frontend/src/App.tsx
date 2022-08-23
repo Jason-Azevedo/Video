@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Following from "./pages/Following";
 import NavbarLayout from "./layouts/Navbar";
 import FooterLayout from "./layouts/Footer";
+import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import { RootState } from "./redux/store";
 import { ColorThemes } from "./features/theme/colorThemeSlice";
@@ -61,6 +62,7 @@ function App() {
           <Route path="/" element={<FooterLayout />}>
             <Route path="/search" element={<Search />} />
             <Route path="/following" element={<Following />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Route>
 
