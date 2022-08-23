@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import Home from "./pages/Home";
 import Watch from "./pages/Watch";
 import Search from "./pages/Search";
-import NavbarFooterLayout from "./layouts/NavbarAndFooter";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import NavbarLayout from "./layouts/Navbar";
 import FooterLayout from "./layouts/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -62,6 +63,8 @@ function App() {
         </Route>
 
         {/* Elements with no navbar or footer */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );

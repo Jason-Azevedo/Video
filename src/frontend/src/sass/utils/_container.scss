@@ -1,9 +1,14 @@
 .container {
-    margin: 0 auto;
-    padding: 1rem;
+  margin: 0 auto;
+  padding: 1rem;
 
-    &--1200 {
-        @extend .container;
-        max-width: 1200px;
-    }
+  &--1200 {
+    @extend .container;
+    max-width: 1200px;
+  }
+
+  &--500 {
+    @extend .container;
+    max-width: 500px;
+  }
 }

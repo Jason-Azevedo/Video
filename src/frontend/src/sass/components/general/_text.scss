@@ -36,4 +36,8 @@
   &.center-text {
     text-align: center;
   }
+
+  &.primary {
+    color: var(--color-primary);
+  }
 }
