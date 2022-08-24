@@ -1,0 +1,9 @@
+.user {
+  &-videos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+}

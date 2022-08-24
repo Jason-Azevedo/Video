@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Following from "./pages/Following";
 import MyVideos from "./pages/MyVideos";
 import NotFound from "./pages/NotFound";
+import User from "./pages/User";
 import NavbarLayout from "./layouts/Navbar";
 import FooterLayout from "./layouts/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -58,6 +59,7 @@ function App() {
         <Route path="/" element={<NavbarLayout />}>
           <Route index element={<Home />} />
           <Route path="/watch" element={<Watch />} />
+          <Route path="/user" element={<User />} />
 
           {/* Routes with navbar and footer */}
           <Route path="/" element={<FooterLayout />}>
