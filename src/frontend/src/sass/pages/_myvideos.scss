@@ -1,0 +1,31 @@
+.myvideos {
+  position: relative;
+  min-height: 80vh;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  &-videos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.myvideo {
+  display: flex;
+  gap: 1rem;
+
+  &-icons {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      padding: 0.5rem 0.2rem;
+    }
+  }
+}

@@ -11,7 +11,6 @@ import { ReactComponent as EllipsisIcon } from "../../assets/svg/ellipsis-vertic
 import { ReactComponent as HouseIcon } from "../../assets/svg/house.svg";
 import { ReactComponent as ShieldDogIcon } from "../../assets/svg/shield-dog.svg";
 import { ReactComponent as ClockIcon } from "../../assets/svg/clock.svg";
-import { ReactComponent as ListUlIcon } from "../../assets/svg/list-ul.svg";
 import { ReactComponent as CameraIcon } from "../../assets/svg/camera.svg";
 import { ReactComponent as GearIcon } from "../../assets/svg/gear.svg";
 
@@ -51,12 +50,7 @@ export function KebabMenu({ toggleOverlay }: INavbarOverlay) {
           icon={<ClockIcon className="icon--24" />}
         />
         <MenuItem
-          to="/"
-          text="Playlists"
-          icon={<ListUlIcon className="icon--24" />}
-        />
-        <MenuItem
-          to="/"
+          to="/myvideos"
           text="My Videos"
           icon={<CameraIcon className="icon--24" />}
         />
