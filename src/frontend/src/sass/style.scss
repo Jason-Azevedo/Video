@@ -10,6 +10,8 @@
   margin: 0;
   box-sizing: border-box;
   outline: none;
+  transition: color 0.2s ease-out, background-color 0.3s ease-out,
+    fill 0.25s ease-out;
 }
 
 a {
