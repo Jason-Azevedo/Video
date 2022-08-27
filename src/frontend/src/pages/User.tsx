@@ -1,7 +1,6 @@
 import React from "react";
 
 import IVideo from "../interfaces/video";
-import VideoCard from "../components/VideoCard";
 import { Spinner } from "../components/Spinner";
 import withPage from "../wrappers/withPage";
 
@@ -25,9 +24,8 @@ export function User() {
       <h1 className="title--24">User's Videos:</h1>
 
       <div className="user-videos">
-        {videos.map((e) => (
-          <VideoCard video={e} />
-        ))}
+        {/* {videos.map((e) => ( */}
+        {/* ))} */}
       </div>
 
       <Spinner />

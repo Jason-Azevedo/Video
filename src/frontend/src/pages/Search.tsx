@@ -1,11 +1,12 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 
-import CompactVideo from "../components/CompactVideo";
+import Video from "../components/Video";
 import Pagination from "../components/nav/Pagination";
 import withPage from "../wrappers/withPage";
 import { useScreenSize } from "../hooks/useScreenSize";
 import IVideo from "../interfaces/video";
+import { maxMobileSize } from "../utils/maxScreenSizes";
 
 export function SearchResults() {
   const screenSize = useScreenSize();
@@ -22,9 +23,10 @@ export function SearchResults() {
     description: "In this video we make the best lasagna in the world!",
     views: 323,
     datePosted: 1660548785,
-    channelProfileImageUrl: "",
+    channelProfileImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNxh1fUmCXzNmubU4QH2KkqQd2JbVeKnURQw&usqp=CAU",
   };
   const videos: Array<IVideo> = new Array(5).fill(data);
+  const videoType = screenSize.width <= maxMobileSize ? "card" : "compressed";
 
   return (
     <div className="search-page container--1200">
@@ -32,7 +34,7 @@ export function SearchResults() {
 
       <div className="search-page-results">
         {videos.map((e) => (
-          <CompactVideo video={e} screen={screenSize} />
+          <Video video={e} type={videoType} screenSize={screenSize} />
         ))}
       </div>
 

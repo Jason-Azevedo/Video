@@ -11,9 +11,48 @@ interface IVideoProps {
   type: "card" | "compressed";
   video: IVideo;
   menuItems?: ReactElement;
+  screenSize?: { width: number; height: number };
 }
 
-export default function Video({ type, video, menuItems }: IVideoProps) {
+function determineContent(
+  screenSize: { width: number; height: number },
+  type: "card" | "compressed"
+) {
+  let titleLength = 200;
+  let channelLength = 100;
+  let showDesc = false;
+
+  if (screenSize.width < 600) {
+    titleLength = 50;
+    channelLength = 30;
+  } else if (screenSize.width < 750) {
+    titleLength = 80;
+    channelLength = 40;
+  }
+
+  if (type === "compressed" && screenSize.width > 767) {
+    showDesc = true;
+  }
+
+  if (type === "card") {
+    titleLength = 70;
+    channelLength = 40;
+  }
+
+  return [titleLength, channelLength, showDesc];
+}
+
+export default function Video({
+  type,
+  video,
+  menuItems,
+  screenSize,
+}: IVideoProps) {
+  const [titleLength, channelLength, showDesc] = determineContent(
+    screenSize || { width: window.innerWidth, height: window.innerHeight },
+    type
+  );
+
   return (
     <div className={`video-${type}`}>
       <Link className="video-link" to="" />
@@ -23,18 +62,26 @@ export default function Video({ type, video, menuItems }: IVideoProps) {
       </div>
 
       <div className="video-content">
-        <div className="video-content-channel-image">
-          <img className="image round" src={video.channelProfileImageUrl} />
-        </div>
+        {type === "card" && (
+          <div className="video-content-channel-image">
+            <img className="image round" src={video.channelProfileImageUrl} />
+          </div>
+        )}
 
         <div className="video-content-details">
-          <h3 className="title--16">{truncateText(video.title, 85)}</h3>
+          <h3 className="title--16">
+            {truncateText(video.title, titleLength as number)}
+          </h3>
           <h4 className="title--14 dim">
-            {truncateText(video.channelName, 40)}
+            {truncateText(video.channelName, channelLength as number)}
           </h4>
           <span className="text--14 dim">
             {video.views}k views • {getPostedAgo(video.datePosted)}
           </span>
+
+          {showDesc && (
+            <p className="text--14">{truncateText(video.description, 120)}</p>
+          )}
         </div>
 
         {menuItems && (

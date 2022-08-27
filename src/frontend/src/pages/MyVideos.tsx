@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import withPage from "../wrappers/withPage";
 import Pagination from "../components/nav/Pagination";
-import CompactVideo from "../components/CompactVideo";
 import IVideo from "../interfaces/video";
 import { useScreenSize } from "../hooks/useScreenSize";
 import { ReactComponent as TrashIcon } from "../assets/svg/trash.svg";
@@ -25,21 +24,6 @@ export function MyVideos() {
   };
   const videos: Array<IVideo> = new Array(10).fill(data);
 
-  const MyVideo = (props: { video: IVideo }) => (
-    <div className="myvideo">
-      <CompactVideo video={props.video} screen={screenSize} />
-
-      <div className="myvideo-icons">
-        <Link to={`/edit?id=${props.video.id}`}>
-          <PencilIcon className="icon--18" />
-        </Link>
-        <Link to={`/confirmdelete?id=${props.video.id}`}>
-          <TrashIcon className="icon--18" />
-        </Link>
-      </div>
-    </div>
-  );
-
   return (
     <div className="myvideos container--1200">
       <div className="myvideos-header">
@@ -50,9 +34,8 @@ export function MyVideos() {
       </div>
 
       <div className="myvideos-videos">
-        {videos.map((e) => (
-          <MyVideo video={e} />
-        ))}
+        {/* {videos.map((e) => (
+        ))} */}
       </div>
 
       <Pagination />
