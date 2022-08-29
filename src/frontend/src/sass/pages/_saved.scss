@@ -1,9 +1,11 @@
 .saved {
   padding: 1rem;
+  max-width: 1266px;
 
   &-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
     margin-bottom: 2rem;

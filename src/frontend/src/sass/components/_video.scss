@@ -37,6 +37,7 @@
     display: flex;
     gap: 1rem;
     padding: 1rem;
+    flex-grow: 1;
 
     &-channel-image .image {
       width: 3rem;
@@ -44,6 +45,8 @@
     }
 
     &-details {
+      flex-grow: 1;
+
       h3 {
         line-height: 1.3rem;
         margin-bottom: 0.7rem;
@@ -51,12 +54,13 @@
 
       h4 {
         line-height: 1rem;
-        margin-bottom: 0.3rem;
       }
 
       span {
         display: inline-block;
         line-height: 0.9rem;
+        margin-top: 0.3rem;
+        margin-bottom: 0.75rem;
       }
     }
   }
@@ -70,7 +74,7 @@
 
     &-icon {
       height: min-content;
-      padding: 0.5rem .5rem 0 .5rem;
+      padding: 0.5rem 0.5rem 0 0.5rem;
     }
 
     & .floating-menu {

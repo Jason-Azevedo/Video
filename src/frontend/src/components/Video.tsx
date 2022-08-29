@@ -64,6 +64,11 @@ export default function Video({
     }
   };
 
+  const floatingMenuPos =
+    type === "card"
+      ? { bottom: "0%", right: "0%" }
+      : { top: "0%", right: "0%" };
+
   return (
     <div className={`video-${type}`}>
       <div className={`video-overlay ${showingMenu ? "" : "hide"}`}></div>
@@ -107,10 +112,11 @@ export default function Video({
 
             <FloatingMenu
               show={showingMenu}
-              position={{ bottom: "100%", right: "0%" }}
+              position={floatingMenuPos}
               offMenuClickHandler={toggleMenu}
             >
-              {menuItems}
+              {/* Hide the menu when a user clicks an item in the menu */}
+              <div onClick={() => showMenu((prev) => !prev)}>{menuItems}</div>
             </FloatingMenu>
           </div>
         )}

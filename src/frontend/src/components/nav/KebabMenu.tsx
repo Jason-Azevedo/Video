@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import NavbarMenu from "./NavbarMenu";
 import AccountSettingsLink from "./AccountSettingsLink";
-import MenuItem from "./MenuItem";
+import MenuItem from "../MenuItem";
 import DarkModeToggle from "../DarkModeToggle";
 import ThemeColorSelector from "../ThemeColorSelector";
 import { INavbarOverlay } from "./Navbar";
