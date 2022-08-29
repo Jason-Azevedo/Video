@@ -12,10 +12,11 @@ interface IFollowingUserProps {
 export default function FollowingUser({ user }: IFollowingUserProps) {
   return (
     <div className="following-user">
-      <Link to={`/user/${user.id}`} className="following-user-info">
-        <img className="image round" src={user.channelProfileImageUrl} alt="" />
-        <h3 className="title--18">{user.name}</h3>
-      </Link>
+      <Link to={`/user/${user.id}`} className="following-user-link"></Link>
+
+      <img className="image round" src={user.channelProfileImageUrl} alt="" />
+      <h3 className="title--18">{user.name}</h3>
+      <p className="text--14 semi-bold dim">404 videos • 24k followers</p>
 
       <button className="button">unfollow</button>
     </div>

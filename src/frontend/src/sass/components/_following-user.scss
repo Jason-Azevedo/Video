@@ -1,20 +1,30 @@
 .following-user {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 1rem;
   background-color: var(--color-foreground);
 
+  &-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   img {
-    width: 3rem;
-    height: 3rem;
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 0.5rem;
   }
 
-  &,
-  &-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &-info {
-    gap: 1rem;
+  button {
+    position: relative;
+    z-index: 5;
+    margin-top: 0.7rem;
   }
 }
