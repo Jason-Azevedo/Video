@@ -45,7 +45,7 @@ export function KebabMenu({ toggleOverlay }: INavbarOverlay) {
           icon={<ShieldDogIcon className="icon--24" />}
         />
         <MenuItem
-          to="/"
+          to="/saved"
           text="Saved"
           icon={<ClockIcon className="icon--24" />}
         />

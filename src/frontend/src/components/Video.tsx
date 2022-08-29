@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import IVideo from "../interfaces/video";
@@ -6,6 +6,7 @@ import getPostedAgo from "../utils/getPostedAgo";
 
 import { ReactComponent as EllipsisIcon } from "../assets/svg/ellipsis-vertical.svg";
 import truncateText from "../utils/truncateText";
+import FloatingMenu from "./FloatingMenu";
 
 interface IVideoProps {
   type: "card" | "compressed";
@@ -53,8 +54,19 @@ export default function Video({
     type
   );
 
+  const ellipsisRef = useRef<HTMLDivElement>(null);
+  const [showingMenu, showMenu] = useState(false);
+
+  const toggleMenu = (event: MouseEvent) => {
+    // Toggle menu if we didn't click on ellipsis
+    if (!ellipsisRef.current?.contains(event.target as Node)) {
+      showMenu((prev) => !prev);
+    }
+  };
+
   return (
     <div className={`video-${type}`}>
+      <div className={`video-overlay ${showingMenu ? "" : "hide"}`}></div>
       <Link className="video-link" to="" />
       <div className="video-thumbnail-container">
         <img className="video-thumbnail image" src={video.thumbnailUrl} />
@@ -85,10 +97,21 @@ export default function Video({
         </div>
 
         {menuItems && (
-          <div className="video-ellipsis">
-            <EllipsisIcon className="icon--18" />
+          <div className="video-ellipsis" ref={ellipsisRef}>
+            <div
+              className="video-ellipsis-icon"
+              onClick={() => showMenu((prev) => !prev)}
+            >
+              <EllipsisIcon className="icon--18" />
+            </div>
 
-            {/* Floating menu here */}
+            <FloatingMenu
+              show={showingMenu}
+              position={{ bottom: "100%", right: "0%" }}
+              offMenuClickHandler={toggleMenu}
+            >
+              {menuItems}
+            </FloatingMenu>
           </div>
         )}
       </div>
