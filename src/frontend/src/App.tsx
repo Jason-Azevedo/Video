@@ -12,6 +12,8 @@ import MyVideos from "./pages/MyVideos";
 import NotFound from "./pages/NotFound";
 import User from "./pages/User";
 import Saved from "./pages/Saved";
+import Create from "./pages/Create";
+import Edit from "./pages/Edit";
 import NavbarLayout from "./layouts/Navbar";
 import FooterLayout from "./layouts/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -73,6 +75,8 @@ function App() {
         </Route>
 
         {/* Elements with no navbar or footer */}
+        <Route path="/create" element={<Create />} />
+        <Route path="/edit" element={<Edit />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

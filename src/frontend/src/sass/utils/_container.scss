@@ -7,6 +7,11 @@
     max-width: 1200px;
   }
 
+  &--600 {
+    @extend .container;
+    max-width: 600px;
+  }
+
   &--500 {
     @extend .container;
     max-width: 500px;

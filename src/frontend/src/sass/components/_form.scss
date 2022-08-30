@@ -1,0 +1,20 @@
+.form {
+  background-color: var(--color-middleground);
+
+  &.container {
+    margin-top: 1rem;
+  }
+
+  h1 {
+    margin: 1rem 0;
+  }
+
+  p {
+    margin-bottom: 0.75rem;
+  }
+
+  button {
+    margin-top: 1rem;
+    margin-left: auto;
+  }
+}
