@@ -3,6 +3,7 @@
 
   &.container {
     margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 
   h1 {
@@ -13,8 +14,20 @@
     margin-bottom: 0.75rem;
   }
 
-  button {
+  &-inline-heading {
+    display: flex;
     margin-top: 1rem;
-    margin-left: auto;
+
+    &.center {
+      align-items: center;
+    }
+
+    &.apart {
+      justify-content: space-between;
+    }
+  }
+
+  .submit-btn {
+    margin: 2rem 0 1rem 0;
   }
 }

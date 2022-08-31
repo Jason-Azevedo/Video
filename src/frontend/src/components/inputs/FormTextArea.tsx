@@ -1,28 +1,23 @@
 import React from "react";
 
-interface IFormInputProps {
+interface IFormTextAreaProps {
   label: string;
   error?: string;
-  password?: boolean;
-  inputRef: React.Ref<HTMLInputElement>;
+  inputRef: React.Ref<HTMLTextAreaElement>;
 }
 
-export default function FormInput({
+export default function FormTextArea({
   label,
   inputRef,
   error,
-  password,
-}: IFormInputProps) {
+}: IFormTextAreaProps) {
   return (
     <div className="input-container">
       <label className="label text--16" htmlFor="">
         {label}
       </label>
-      <input
-        ref={inputRef}
-        className="input"
-        type={password ? "password" : "text"}
-      />
+
+      <textarea ref={inputRef} className="input-area" />
 
       {error && <span className="text--14 semi-bold dim">{error}</span>}
     </div>
