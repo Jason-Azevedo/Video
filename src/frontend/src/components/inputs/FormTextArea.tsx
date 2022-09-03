@@ -2,14 +2,18 @@ import React from "react";
 
 interface IFormTextAreaProps {
   label: string;
+  name?: string;
+  value?: string;
   error?: string;
-  inputRef: React.Ref<HTMLTextAreaElement>;
+  onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
 }
 
 export default function FormTextArea({
   label,
-  inputRef,
+  name,
+  value,
   error,
+  onChange,
 }: IFormTextAreaProps) {
   return (
     <div className="input-container">
@@ -17,7 +21,12 @@ export default function FormTextArea({
         {label}
       </label>
 
-      <textarea ref={inputRef} className="input-area" />
+      <textarea
+        name={name}
+        value={value}
+        className="input-area"
+        onChange={onChange}
+      />
 
       {error && <span className="text--14 semi-bold dim">{error}</span>}
     </div>

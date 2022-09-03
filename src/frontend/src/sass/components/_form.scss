@@ -10,11 +10,7 @@
     margin: 1rem 0;
   }
 
-  p {
-    margin-bottom: 0.75rem;
-  }
-
-  &-inline-heading {
+  &-inline {
     display: flex;
     margin-top: 1rem;
 
@@ -25,6 +21,14 @@
     &.apart {
       justify-content: space-between;
     }
+
+    &.gap16 {
+      gap: 1rem;
+    }
+  }
+
+  &-alt-text {
+    margin: 2rem 0 1.5rem 0;
   }
 
   .submit-btn {

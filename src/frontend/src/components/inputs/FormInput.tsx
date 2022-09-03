@@ -2,16 +2,20 @@ import React from "react";
 
 interface IFormInputProps {
   label: string;
+  name?: string;
+  value?: string;
   error?: string;
   password?: boolean;
-  inputRef: React.Ref<HTMLInputElement>;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export default function FormInput({
   label,
-  inputRef,
+  name,
+  value,
   error,
   password,
+  onChange,
 }: IFormInputProps) {
   return (
     <div className="input-container">
@@ -19,9 +23,11 @@ export default function FormInput({
         {label}
       </label>
       <input
-        ref={inputRef}
+        name={name}
+        value={value}
         className="input"
         type={password ? "password" : "text"}
+        onChange={onChange}
       />
 
       {error && <span className="text--14 semi-bold dim">{error}</span>}

@@ -13,6 +13,7 @@ import { ReactComponent as ShieldDogIcon } from "../../assets/svg/shield-dog.svg
 import { ReactComponent as ClockIcon } from "../../assets/svg/clock.svg";
 import { ReactComponent as CameraIcon } from "../../assets/svg/camera.svg";
 import { ReactComponent as GearIcon } from "../../assets/svg/gear.svg";
+import { ReactComponent as LogoutIcon } from "../../assets/svg/logout.svg";
 
 export function KebabMenu({ toggleOverlay }: INavbarOverlay) {
   const [isShowing, showMenu] = useState(false);
@@ -66,6 +67,12 @@ export function KebabMenu({ toggleOverlay }: INavbarOverlay) {
         to="/account"
         text="Settings"
         icon={<GearIcon className="icon--24" />}
+      />
+
+      <MenuItem
+        to="/logout"
+        text="Logout"
+        icon={<LogoutIcon className="icon--24" />}
       />
     </NavbarMenu>
   );

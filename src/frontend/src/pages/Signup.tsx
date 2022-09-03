@@ -10,51 +10,53 @@ export default function Signup() {
   const confirmPassRef = useRef(null);
 
   return (
-    <form className="auth-form container--500" action="">
+    <form className="form container--500" action="">
       <h2 className="title--18 bold dim">Vidio</h2>
       <h1 className="title--24">Signup</h1>
 
       {/* Username */}
-      <FormInput
+      {/* <FormInput
         label="Username"
         error="Please fill in field"
-        inputRef={nameRef}
-      />
+        onChange={console.log}
+      /> */}
 
       {/* Email */}
-      <FormInput
+      {/* <FormInput
         label="Email"
         error="Please fill in field"
-        inputRef={emailRef}
-      />
+        onChange={console.log}
+      /> */}
 
       {/* Password */}
-      <FormInput
+      {/* <FormInput
         password
         label="Password"
         error="Please fill in field"
-        inputRef={passRef}
-      />
+        onChange={console.log}
+      /> */}
 
       {/* Confirm Password */}
-      <FormInput
+      {/* <FormInput
         password
         label="Confirm Password"
         error="Please fill in field"
-        inputRef={confirmPassRef}
-      />
+        onChange={console.log}
+      /> */}
 
-      <p className="text--16">
+      <p className="text--16 form-alt-text">
         Already have an account?{" "}
         <Link className="link" to="/login">
           Log In!
         </Link>
       </p>
 
-      <Link className="link" to="/">
-        Go to home
-      </Link>
-      <button className="button">Sign up</button>
+      <div className="form-inline center gap16">
+        <Link className="link" to="/">
+          Go to home
+        </Link>
+        <button className="button">Sign up</button>
+      </div>
     </form>
   );
 }
