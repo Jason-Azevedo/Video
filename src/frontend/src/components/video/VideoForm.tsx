@@ -58,9 +58,38 @@ export default function VideoForm({
     e.preventDefault();
 
     // Validation
+    if (validateChanges()) return;
 
-    // Pass the data to parent
-    // onSubmit(data);
+    onSubmit(formData);
+  };
+
+  const validateChanges = () => {
+    // Validate title
+    if (formData.title?.length > 100) {
+      setFormData((prev) => ({
+        ...prev,
+        errors: { title: "Title length cannot exceed 100 characters" },
+      }));
+      return false;
+    }
+
+    if (formData.title?.trim() === "") {
+      setFormData((prev) => ({
+        ...prev,
+        errors: { title: "Video must have a title" },
+      }));
+
+      return false;
+    }
+
+    // Validate description
+    if (formData.description?.length > 500) {
+      setFormData((prev) => ({
+        ...prev,
+        errors: { title: "Description length cannot exceed 500 characters" },
+      }));
+      return false;
+    }
   };
 
   const onFileChange = (type: string, payload: File | null) => {
