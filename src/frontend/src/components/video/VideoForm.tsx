@@ -17,8 +17,8 @@ export interface IVideoFormState {
   description: string;
   thumbnailUrl: string;
   videoUrl: string;
-  thumbnail: File;
-  video: File;
+  thumbnail?: File;
+  video?: File;
   publish: boolean;
   errors: IVideoFormErrors;
 }
@@ -38,9 +38,18 @@ interface IVideoFormProps {
   onSubmit: (data: IVideoFormState) => void;
 }
 
+const initialState: IVideoFormState = {
+  title: "",
+  description: "",
+  thumbnailUrl: "",
+  videoUrl: "",
+  publish: false,
+  errors: {},
+};
+
 export default function VideoForm({
   config,
-  state,
+  state = initialState,
   onSubmit,
 }: IVideoFormProps) {
   const [formData, setFormData] = useState(state);
@@ -48,8 +57,44 @@ export default function VideoForm({
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validation
+
     // Pass the data to parent
     // onSubmit(data);
+  };
+
+  const onFileChange = (type: string, payload: File | null) => {
+    if (!payload) return;
+
+    let url = "";
+
+    switch (type) {
+      case "thumbnail":
+        url = URL.createObjectURL(payload);
+
+        // Cleanup to prevent memory leaks
+        if (formData.thumbnail) URL.revokeObjectURL(formData.thumbnailUrl);
+
+        setFormData((prev) => ({
+          ...prev,
+          thumbnailUrl: url,
+          thumbnail: payload,
+        }));
+        break;
+
+      case "video":
+        url = URL.createObjectURL(payload);
+
+        // Cleanup to prevent memory leaks
+        if (formData.video) URL.revokeObjectURL(formData.videoUrl);
+
+        setFormData((prev) => ({
+          ...prev,
+          videoUrl: url,
+          video: payload,
+        }));
+        break;
+    }
   };
 
   return (
@@ -60,49 +105,69 @@ export default function VideoForm({
       <h1 className="title--24">{config.title}</h1>
 
       <FormInput
-        label="Title"
-        value={formData?.title}
-        error={formData?.errors?.title}
-        onChange={console.log}
+        label={`Title (${100 - (formData.title?.length || 0)})`}
+        value={formData.title}
+        error={formData.errors?.title}
+        onChange={(e) =>
+          formData.title?.length < 100 &&
+          setFormData((prev) => ({ ...prev, title: e.target.value }))
+        }
       />
 
       <FormTextArea
-        label="Description"
-        value={state?.description}
-        error={formData?.errors?.title}
-        onChange={console.log}
+        label={`Description (${500 - (formData?.description?.length || 0)})`}
+        value={formData.description}
+        error={formData.errors?.description}
+        onChange={(e) =>
+          formData.description?.length < 500 &&
+          setFormData((prev) => ({ ...prev, description: e.target.value }))
+        }
       />
 
       <div className="form-inline center apart">
         <h2 className="title--18">Thumbnail</h2>
 
-        <FileUploadButton accepts=".png, .jpg, .webp" onChange={console.log} />
+        <FileUploadButton
+          accepts=".png, .jpg, .webp"
+          onChange={(e) =>
+            onFileChange("thumbnail", e.target.files && e.target.files[0])
+          }
+        />
       </div>
 
-      {/* {
+      {formData.thumbnailUrl && (
         <img
           className="form-thumnail-preview image"
           style={{ width: "100%", maxHeight: "300px" }}
-          src={}
+          src={formData.thumbnailUrl}
         />
-      } */}
+      )}
 
       <div className="form-inline center apart">
         <h2 className="title--18">Video</h2>
 
-        <FileUploadButton accepts=".mp4" onChange={console.log} />
+        <FileUploadButton
+          accepts=".mp4"
+          onChange={(e) =>
+            onFileChange("video", e.target.files && e.target.files[0])
+          }
+        />
       </div>
 
-      {/* {
+      {formData.videoUrl && (
         <video
           className="form-thumnail-preview image"
           style={{ width: "100%", maxHeight: "300px" }}
-          src={}
+          src={formData.videoUrl}
           controls
         />
-      } */}
+      )}
 
-      <LabelCheckbox label="Publish" checked={true} onChange={console.log} />
+      <LabelCheckbox
+        label="Publish"
+        checked={formData.publish}
+        onChange={(e) => setFormData((prev) => ({ ...prev, publish: e }))}
+      />
 
       <button className="button submit-btn" type="submit">
         {config.submitButtonText}
