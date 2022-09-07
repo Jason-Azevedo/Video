@@ -72,7 +72,7 @@ export default function Video({
   return (
     <div className={`video-${type}`}>
       <div className={`video-overlay ${showingMenu ? "" : "hide"}`}></div>
-      <Link className="video-link" to="" />
+      <Link className="video-link" to={`/watch?v=${video.id}`} />
       <div className="video-thumbnail-container">
         <img className="video-thumbnail image" src={video.thumbnailUrl} />
         <span className="video-duration">8:36</span>
