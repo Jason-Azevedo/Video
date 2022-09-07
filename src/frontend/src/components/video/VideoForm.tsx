@@ -5,6 +5,7 @@ import FormInput from "../inputs/FormInput";
 import FormTextArea from "../inputs/FormTextArea";
 import FileUploadButton from "../buttons/FileUploadButton";
 import LabelCheckbox from "../buttons/LabelCheckbox";
+import { validateString } from "../../validation/stringValidator";
 
 export interface IVideoFormConfig {
   title: string;
@@ -20,21 +21,18 @@ export interface IVideoFormState {
   thumbnail?: File;
   video?: File;
   publish: boolean;
-  errors: IVideoFormErrors;
 }
 
 export interface IVideoFormErrors {
   general?: string;
   title?: string;
   description?: string;
-  thumbnail?: string;
-  video?: string;
-  publish?: string;
 }
 
 interface IVideoFormProps {
   config: IVideoFormConfig;
   state?: IVideoFormState;
+  error?: IVideoFormErrors;
   onSubmit: (data: IVideoFormState) => void;
 }
 
@@ -44,86 +42,72 @@ const initialState: IVideoFormState = {
   thumbnailUrl: "",
   videoUrl: "",
   publish: false,
-  errors: {},
+};
+
+const initialErrorState: IVideoFormErrors = {
+  general: "",
+  description: "",
+  title: "",
 };
 
 export default function VideoForm({
   config,
   state = initialState,
+  error = initialErrorState,
   onSubmit,
 }: IVideoFormProps) {
   const [formData, setFormData] = useState(state);
+  const [errors, setErrors] = useState(error);
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validation
-    if (validateChanges()) return;
+    const titleResult = validateString(
+      { maxLength: 100, notEmpty: true },
+      formData.title
+    );
+    const descriptionResult = validateString(
+      { maxLength: 500 },
+      formData.description
+    );
 
+    if (titleResult.failed || descriptionResult.failed) {
+      setErrors((prev) => ({
+        ...prev,
+        general: "Resolve the errors below to continue",
+        title: titleResult.message,
+        description: descriptionResult.message,
+      }));
+      return;
+    }
+
+    if (formData.publish && !formData.thumbnailUrl && !formData.videoUrl) {
+      setErrors((prev) => ({
+        ...prev,
+        general:
+          "Cannot publish video if the title, thumbnail and video fields have not been completed.",
+      }));
+      return;
+    }
+
+    // Submit
     onSubmit(formData);
   };
 
-  const validateChanges = () => {
-    // Validate title
-    if (formData.title?.length > 100) {
-      setFormData((prev) => ({
-        ...prev,
-        errors: { title: "Title length cannot exceed 100 characters" },
-      }));
-      return false;
-    }
-
-    if (formData.title?.trim() === "") {
-      setFormData((prev) => ({
-        ...prev,
-        errors: { title: "Video must have a title" },
-      }));
-
-      return false;
-    }
-
-    // Validate description
-    if (formData.description?.length > 500) {
-      setFormData((prev) => ({
-        ...prev,
-        errors: { title: "Description length cannot exceed 500 characters" },
-      }));
-      return false;
-    }
-  };
-
-  const onFileChange = (type: string, payload: File | null) => {
+  const onFileChange = (name: "thumbnail" | "video", payload: File | null) => {
     if (!payload) return;
 
-    let url = "";
+    let url = URL.createObjectURL(payload);
 
-    switch (type) {
-      case "thumbnail":
-        url = URL.createObjectURL(payload);
+    // Cleanup to prevent memory leaks
+    if (formData[name]) URL.revokeObjectURL(formData.thumbnailUrl);
 
-        // Cleanup to prevent memory leaks
-        if (formData.thumbnail) URL.revokeObjectURL(formData.thumbnailUrl);
-
-        setFormData((prev) => ({
-          ...prev,
-          thumbnailUrl: url,
-          thumbnail: payload,
-        }));
-        break;
-
-      case "video":
-        url = URL.createObjectURL(payload);
-
-        // Cleanup to prevent memory leaks
-        if (formData.video) URL.revokeObjectURL(formData.videoUrl);
-
-        setFormData((prev) => ({
-          ...prev,
-          videoUrl: url,
-          video: payload,
-        }));
-        break;
-    }
+    setFormData((prev) => ({
+      ...prev,
+      [name + "Url"]: url,
+      [name]: payload,
+    }));
   };
 
   return (
@@ -133,12 +117,15 @@ export default function VideoForm({
       </Link>
       <h1 className="title--24">{config.title}</h1>
 
+      {errors.general && (
+        <span className="text--16 dim semi-bold">{errors.general}</span>
+      )}
+
       <FormInput
-        label={`Title (${100 - (formData.title?.length || 0)})`}
+        label={`Title (${100 - formData.title?.length || 0})`}
         value={formData.title}
-        error={formData.errors?.title}
+        error={errors?.title}
         onChange={(e) =>
-          formData.title?.length < 100 &&
           setFormData((prev) => ({ ...prev, title: e.target.value }))
         }
       />
@@ -146,9 +133,8 @@ export default function VideoForm({
       <FormTextArea
         label={`Description (${500 - (formData?.description?.length || 0)})`}
         value={formData.description}
-        error={formData.errors?.description}
+        error={errors?.description}
         onChange={(e) =>
-          formData.description?.length < 500 &&
           setFormData((prev) => ({ ...prev, description: e.target.value }))
         }
       />
