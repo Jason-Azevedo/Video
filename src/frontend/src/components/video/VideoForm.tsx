@@ -6,6 +6,7 @@ import FormTextArea from "../inputs/FormTextArea";
 import FileUploadButton from "../buttons/FileUploadButton";
 import LabelCheckbox from "../buttons/LabelCheckbox";
 import { validateString } from "../../validation/stringValidator";
+import VideoPlayer from "./VideoPlayer";
 
 export interface IVideoFormConfig {
   title: string;
@@ -170,12 +171,7 @@ export default function VideoForm({
       </div>
 
       {formData.videoUrl && (
-        <video
-          className="form-thumnail-preview image"
-          style={{ width: "100%", maxHeight: "300px" }}
-          src={formData.videoUrl}
-          controls
-        />
+        <VideoPlayer url={formData.videoUrl} width="100%" height="300px" />
       )}
 
       <LabelCheckbox
