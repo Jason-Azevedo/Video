@@ -1,0 +1,38 @@
+.slider-bar {
+  position: relative;
+  width: 100%;
+
+  &,
+  &-progress,
+  &-background,
+  &-buffer {
+    height: 4px;
+  }
+
+  &-progress {
+    position: absolute;
+    top: 0;
+    background-color: white;
+    z-index: 2;
+
+    &.primary {
+      background-color: var(--color-primary);
+    }
+  }
+
+  &-buffer {
+    position: absolute;
+    top: 0;
+    background-color: #666;
+  }
+
+  &-background {
+    width: 100%;
+    background-color: #3f3f3f;
+  }
+
+  &-padding {
+    padding: 4px 0;
+    cursor: pointer;
+  }
+}

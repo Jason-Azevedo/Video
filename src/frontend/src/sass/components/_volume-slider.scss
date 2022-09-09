@@ -1,0 +1,9 @@
+.volume-slider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  & .slider-bar {
+    width: 60px;
+  }
+}

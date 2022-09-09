@@ -14,11 +14,6 @@
     cursor: pointer;
   }
 
-  &-duration {
-    display: block;
-    text-align: end;
-  }
-
   &-video {
     object-fit: cover;
     width: 100%;
@@ -39,41 +34,14 @@
   &-controls {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0 0.5rem 0.2rem 0.5rem;
+    margin-top: 0.5rem;
 
-    & div {
+    &-container {
       display: flex;
-      gap: 0.3rem;
-    }
-  }
-
-  &-progress-bar {
-    position: relative;
-    width: 100%;
-    height: 4px;
-    background-color: #7e7e7e;
-    margin: 0.5rem 0 0.7rem 0;
-    cursor: pointer;
-
-    &-progress {
-      width: 20%;
-      height: 100%;
-      background-color: var(--color-primary);
-    }
-  }
-
-  &-volume-slider {
-    position: relative;
-    width: 40px;
-    height: 4px;
-    background-color: #9e9e9e;
-    margin: 0.5rem 1rem 0.5rem 0;
-    cursor: pointer;
-
-    &-progress {
-      width: 40%;
-      height: 100%;
-      background-color: white;
+      align-items: center;
+      gap: 0.5rem;
     }
   }
 }
