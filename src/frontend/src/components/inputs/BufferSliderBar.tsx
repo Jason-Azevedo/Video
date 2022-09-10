@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import useSlider from "../../hooks/useSlider";
 
 export interface IBufferSliderBar {
   progress: number;
@@ -9,8 +10,10 @@ export default function BufferSliderBar({
   progress,
   buffer,
 }: IBufferSliderBar) {
+  const sliderRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="slider-bar-padding">
+    <div ref={sliderRef} className="slider-bar-padding">
       <div className="slider-bar">
         <div className="slider-bar-background"></div>
         <div
