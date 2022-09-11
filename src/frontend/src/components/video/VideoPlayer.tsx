@@ -30,7 +30,7 @@ export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
       <div className="video-player-container">
         {/* Video duration */}
 
-        <BufferSliderBar progress={32} buffer={54} />
+        <BufferSliderBar progressPercent={32} bufferPercent={54} />
 
         {/* Controls */}
         <div className="video-player-controls">
@@ -47,7 +47,7 @@ export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
           </div>
 
           <div className="video-player-controls-container">
-            <VolumeSlider progress={45} />
+            <VolumeSlider progressPercent={45} />
             <span className="text--14 white">22:34 / 42:22</span>
           </div>
         </div>

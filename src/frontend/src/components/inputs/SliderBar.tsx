@@ -1,13 +1,17 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import useSlider from "../../hooks/useSlider";
 
 export interface ISliderBarProps {
-  progress: number;
+  progressPercent: number;
 }
 
-export default function SliderBar({ progress }: ISliderBarProps) {
+export default function SliderBar({ progressPercent }: ISliderBarProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const { sliderPercent } = useSlider(sliderRef);
+  const { progress, setProgress } = useSlider(sliderRef);
+
+  useEffect(() => {
+    setProgress(progressPercent);
+  }, [progressPercent]);
 
   return (
     <div ref={sliderRef} className="slider-bar-padding">
@@ -15,7 +19,7 @@ export default function SliderBar({ progress }: ISliderBarProps) {
         <div className="slider-bar-background"></div>
         <div
           className="slider-bar-progress"
-          style={{ width: `${sliderPercent}%` }}
+          style={{ width: `${progress}%` }}
         ></div>
       </div>
     </div>

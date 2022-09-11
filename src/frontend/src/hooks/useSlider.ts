@@ -1,42 +1,44 @@
 import React, { useState, useEffect } from "react";
 
 export default function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
-  const [sliderPercent, setSliderPercent] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (!sliderRef.current) return;
 
+    const slider = sliderRef.current;
+
     let isSliding = false;
 
     const updateSlider = (x: number) => {
-      if (!sliderRef.current) return;
+      if (!slider) return;
 
-      const sliderBox = sliderRef.current.getBoundingClientRect();
+      const sliderBox = slider.getBoundingClientRect();
       const adjustedX = x - sliderBox.left;
       const adjustedSide = sliderBox.right - sliderBox.left;
       const percent = Math.round((adjustedX / adjustedSide) * 100);
 
-      setSliderPercent(percent);
+      setProgress(percent);
     };
 
-    sliderRef.current.addEventListener("mousedown", (e) => {
+    slider.addEventListener("mousedown", (e) => {
       isSliding = true;
 
       updateSlider(e.x);
     });
 
-    sliderRef.current.addEventListener("mousemove", (e) => {
+    slider.addEventListener("mousemove", (e) => {
       if (isSliding) updateSlider(e.x);
     });
 
-    sliderRef.current.addEventListener("mouseup", (e) => {
+    slider.addEventListener("mouseup", (e) => {
       isSliding = false;
     });
 
-    sliderRef.current.addEventListener("mouseleave", (e) => {
+    slider.addEventListener("mouseleave", (e) => {
       isSliding = false;
     });
   }, []);
 
-  return { sliderPercent };
+  return { progress, setProgress };
 }

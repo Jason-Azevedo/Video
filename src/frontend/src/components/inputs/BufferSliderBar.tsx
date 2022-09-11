@@ -1,16 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import useSlider from "../../hooks/useSlider";
 
 export interface IBufferSliderBar {
-  progress: number;
-  buffer: number;
+  progressPercent: number;
+  bufferPercent: number;
 }
 
 export default function BufferSliderBar({
-  progress,
-  buffer,
+  progressPercent,
+  bufferPercent,
 }: IBufferSliderBar) {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const { progress, setProgress } = useSlider(sliderRef);
+
+  useEffect(() => {
+    setProgress(progressPercent);
+  }, [progressPercent]);
 
   return (
     <div ref={sliderRef} className="slider-bar-padding">
@@ -22,7 +27,7 @@ export default function BufferSliderBar({
         ></div>
         <div
           className="slider-bar-buffer"
-          style={{ width: `${buffer}%` }}
+          style={{ width: `${bufferPercent}%` }}
         ></div>
       </div>
     </div>
