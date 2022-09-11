@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-export default function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
-  const [progress, setProgress] = useState(0);
-
+export default function useSlider(
+  sliderRef: React.RefObject<HTMLDivElement>,
+  setProgress: (percent: number) => void
+) {
   useEffect(() => {
     if (!sliderRef.current) return;
 
@@ -39,6 +40,4 @@ export default function useSlider(sliderRef: React.RefObject<HTMLDivElement>) {
       isSliding = false;
     });
   }, []);
-
-  return { progress, setProgress };
 }

@@ -5,11 +5,12 @@ import SliderBar, { ISliderBarProps } from "./SliderBar";
 
 export default function VolumeSlider({
   progressPercent = 50,
+  setProgress,
 }: ISliderBarProps) {
   return (
     <div className="volume-slider">
       <VolumeIcon className="icon--18 white" />
-      <SliderBar progressPercent={progressPercent} />
+      <SliderBar progressPercent={progressPercent} setProgress={setProgress} />
     </div>
   );
 }

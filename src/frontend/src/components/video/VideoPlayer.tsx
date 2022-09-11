@@ -7,6 +7,7 @@ import { ReactComponent as NextIcon } from "../../assets/svg/forward-step.svg";
 import { ReactComponent as VolumeIcon } from "../../assets/svg/volume.svg";
 import VolumeSlider from "../inputs/VolumeSlider";
 import BufferSliderBar from "../inputs/BufferSliderBar";
+import useVideoPlayer from "../../hooks/useVideoPlayer";
 
 interface IVideoPlayerProps {
   url: string;
@@ -15,8 +16,19 @@ interface IVideoPlayerProps {
 }
 
 export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
-  const [playerState, setPlayerState] = useState({ playing: false });
   const playerRef = useRef<HTMLVideoElement>(null);
+  const { isPlaying, volume, adjustVolume, togglePlay } =
+    useVideoPlayer(playerRef);
+
+  const playPauseIcon = (
+    <div style={{ height: "18px" }} onClick={togglePlay}>
+      {isPlaying ? (
+        <PauseIcon className="icon--18 white" />
+      ) : (
+        <PlayIcon className="icon--18 white" />
+      )}
+    </div>
+  );
 
   return (
     <div className="video-player" style={{ height }}>
@@ -26,6 +38,7 @@ export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
         src={url}
         width={width}
         height={height}
+        onClick={togglePlay}
       />
       <div className="video-player-container">
         {/* Video duration */}
@@ -36,18 +49,12 @@ export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
         <div className="video-player-controls">
           <div className="video-player-controls-container">
             <PrevIcon className="icon--18 white" />
-            <div style={{ height: "18px" }}>
-              {playerState.playing ? (
-                <PauseIcon className="icon--18 white" />
-              ) : (
-                <PlayIcon className="icon--18 white" />
-              )}
-            </div>
+            {playPauseIcon}
             <NextIcon className="icon--18 white" />
           </div>
 
           <div className="video-player-controls-container">
-            <VolumeSlider progressPercent={45} />
+            <VolumeSlider progressPercent={volume} setProgress={adjustVolume} />
             <span className="text--14 white">22:34 / 42:22</span>
           </div>
         </div>

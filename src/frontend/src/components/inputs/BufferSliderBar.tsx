@@ -11,11 +11,10 @@ export default function BufferSliderBar({
   bufferPercent,
 }: IBufferSliderBar) {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const { progress, setProgress } = useSlider(sliderRef);
 
-  useEffect(() => {
-    setProgress(progressPercent);
-  }, [progressPercent]);
+  // useEffect(() => {
+  // setProgress(progressPercent);
+  // }, [progressPercent]);
 
   return (
     <div ref={sliderRef} className="slider-bar-padding">
@@ -23,7 +22,7 @@ export default function BufferSliderBar({
         <div className="slider-bar-background"></div>
         <div
           className="slider-bar-progress primary"
-          style={{ width: `${progress}%` }}
+          style={{ width: `${50}%` }}
         ></div>
         <div
           className="slider-bar-buffer"
