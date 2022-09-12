@@ -15,9 +15,12 @@ export default function useSlider(
       if (!slider) return;
 
       const sliderBox = slider.getBoundingClientRect();
-      const adjustedX = x - sliderBox.left;
-      const adjustedSide = sliderBox.right - sliderBox.left;
-      const percent = Math.round((adjustedX / adjustedSide) * 100);
+      const adjustedX = x - sliderBox.left - 8;
+      const adjustedSide = sliderBox.right - sliderBox.left - 16;
+      let percent = Math.round((adjustedX / adjustedSide) * 100);
+
+      if (percent < 0) percent = 0;
+      if (percent > 100) percent = 100;
 
       setProgress(percent);
     };

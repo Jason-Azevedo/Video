@@ -2,11 +2,15 @@ import React, { useReducer, useEffect } from "react";
 
 enum VideoPlayerActions {
   togglePlay = "togglePlay",
+  currentTime = "currentTime",
+  duration = "duration",
   volume = "volume",
 }
 
 interface IVideoPlayerState {
   isPlaying: boolean;
+  currentTime: number;
+  duration: number;
   volume: number;
 }
 
@@ -26,6 +30,17 @@ function playerReducer(
 
       return { ...state, volume: volume };
 
+    case VideoPlayerActions.currentTime:
+      return { ...state, currentTime: action.payload as number };
+
+    case VideoPlayerActions.currentTime:
+      const currentTime = Math.round(action.payload as number);
+
+      return { ...state, currentTime: currentTime };
+
+    case VideoPlayerActions.duration:
+      return { ...state, duration: action.payload as number };
+
     default:
       return state;
   }
@@ -33,6 +48,8 @@ function playerReducer(
 
 const initialState = {
   isPlaying: false,
+  currentTime: 0,
+  duration: 0,
   volume: 50,
 };
 
@@ -42,8 +59,29 @@ export default function useVideoPlayer(
   const [state, dispatch] = useReducer(playerReducer, initialState);
   const video = videoRef.current;
 
-  /* PLAY */
+  /* VIDEO LOADED */
+  useEffect(() => {
+    if (!video) return;
+    console.log(video);
 
+    /* DURATION */
+    video.addEventListener("durationchange", () => {
+      dispatch({
+        type: VideoPlayerActions.duration,
+        payload: video.duration,
+      });
+    });
+
+    /* CURRENT TIME */
+    video.addEventListener("timeupdate", () =>
+      dispatch({
+        type: VideoPlayerActions.currentTime,
+        payload: video.currentTime,
+      })
+    );
+  }, [video]);
+
+  /* PLAY */
   const togglePlay = () => {
     dispatch({ type: VideoPlayerActions.togglePlay });
   };
@@ -51,10 +89,12 @@ export default function useVideoPlayer(
   useEffect(() => {
     if (!video) return;
     state.isPlaying ? video.play() : video.pause();
+
+    // Pause the video on unmount
+    return () => video.pause();
   }, [state.isPlaying]);
 
   /* VOLUME */
-
   const adjustVolume = (volume: number) => {
     // Dont update if the value hasn't changed
     // This method is mean't to be used with a volume slider

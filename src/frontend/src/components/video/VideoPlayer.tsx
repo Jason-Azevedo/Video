@@ -8,6 +8,7 @@ import { ReactComponent as VolumeIcon } from "../../assets/svg/volume.svg";
 import VolumeSlider from "../inputs/VolumeSlider";
 import BufferSliderBar from "../inputs/BufferSliderBar";
 import useVideoPlayer from "../../hooks/useVideoPlayer";
+import { toHMS } from "../../utils/toHMS";
 
 interface IVideoPlayerProps {
   url: string;
@@ -17,7 +18,7 @@ interface IVideoPlayerProps {
 
 export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
   const playerRef = useRef<HTMLVideoElement>(null);
-  const { isPlaying, volume, adjustVolume, togglePlay } =
+  const { isPlaying, currentTime, duration, volume, adjustVolume, togglePlay } =
     useVideoPlayer(playerRef);
 
   const playPauseIcon = (
@@ -58,7 +59,9 @@ export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
               progressPercent={Math.round(volume * 100)}
               setProgress={adjustVolume}
             />
-            <span className="text--14 white">22:34 / 42:22</span>
+            <span className="text--14 white video-player-duration">
+              {toHMS(currentTime)} / {toHMS(duration)}
+            </span>
           </div>
         </div>
       </div>
