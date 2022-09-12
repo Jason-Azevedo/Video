@@ -19,9 +19,9 @@ function playerReducer(
       return { ...state, isPlaying: !state.isPlaying };
 
     case VideoPlayerActions.volume:
-      let volume = (action.payload as number) / 1000;
+      let volume = (action.payload as number) / 100;
 
-      if (volume > 0.01) volume = 0.01;
+      if (volume > 1) volume = 1;
       if (volume < 0) volume = 0;
 
       return { ...state, volume: volume };
@@ -56,6 +56,10 @@ export default function useVideoPlayer(
   /* VOLUME */
 
   const adjustVolume = (volume: number) => {
+    // Dont update if the value hasn't changed
+    // This method is mean't to be used with a volume slider
+    if (volume === state.volume) return;
+
     dispatch({ type: VideoPlayerActions.volume, payload: volume });
   };
 

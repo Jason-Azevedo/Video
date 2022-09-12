@@ -54,7 +54,10 @@ export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
           </div>
 
           <div className="video-player-controls-container">
-            <VolumeSlider progressPercent={volume} setProgress={adjustVolume} />
+            <VolumeSlider
+              progressPercent={Math.round(volume * 100)}
+              setProgress={adjustVolume}
+            />
             <span className="text--14 white">22:34 / 42:22</span>
           </div>
         </div>
