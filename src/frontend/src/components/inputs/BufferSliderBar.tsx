@@ -22,7 +22,7 @@ export default function BufferSliderBar({
         <div className="slider-bar-background"></div>
         <div
           className="slider-bar-progress primary"
-          style={{ width: `${50}%` }}
+          style={{ width: `${progressPercent}%` }}
         ></div>
         <div
           className="slider-bar-buffer"

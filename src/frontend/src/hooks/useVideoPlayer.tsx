@@ -31,7 +31,7 @@ function playerReducer(
       return { ...state, volume: volume };
 
     case VideoPlayerActions.currentTime:
-      const currentTime = Math.trunc(action.payload as number);
+      const currentTime = action.payload as number;
 
       return { ...state, currentTime: currentTime };
 

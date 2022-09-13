@@ -21,6 +21,9 @@ export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
   const { isPlaying, currentTime, duration, volume, adjustVolume, togglePlay } =
     useVideoPlayer(playerRef);
 
+  console.log(currentTime);
+  console.log(duration);
+
   const playPauseIcon = (
     <div style={{ height: "18px" }} onClick={togglePlay}>
       {isPlaying ? (
@@ -44,7 +47,10 @@ export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
       <div className={`video-player-container ${isPlaying ? "hidden" : ""}`}>
         {/* Video duration */}
 
-        <BufferSliderBar progressPercent={32} bufferPercent={54} />
+        <BufferSliderBar
+          progressPercent={Math.trunc((currentTime / duration) * 100)}
+          bufferPercent={54}
+        />
 
         {/* Controls */}
         <div className="video-player-controls">
