@@ -41,7 +41,7 @@ export default function VideoPlayer({ url, width, height }: IVideoPlayerProps) {
         height={height}
         onClick={togglePlay}
       />
-      <div className="video-player-container">
+      <div className={`video-player-container ${isPlaying ? "hidden" : ""}`}>
         {/* Video duration */}
 
         <BufferSliderBar progressPercent={32} bufferPercent={54} />

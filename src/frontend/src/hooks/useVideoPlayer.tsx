@@ -31,10 +31,7 @@ function playerReducer(
       return { ...state, volume: volume };
 
     case VideoPlayerActions.currentTime:
-      return { ...state, currentTime: action.payload as number };
-
-    case VideoPlayerActions.currentTime:
-      const currentTime = Math.round(action.payload as number);
+      const currentTime = Math.trunc(action.payload as number);
 
       return { ...state, currentTime: currentTime };
 
@@ -79,6 +76,13 @@ export default function useVideoPlayer(
         payload: video.currentTime,
       })
     );
+
+    /* ENDED */
+    video.addEventListener("ended", () => {
+      dispatch({
+        type: VideoPlayerActions.togglePlay,
+      });
+    });
   }, [video]);
 
   /* PLAY */

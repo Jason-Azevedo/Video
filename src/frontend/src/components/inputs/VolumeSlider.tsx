@@ -9,7 +9,7 @@ export default function VolumeSlider({
 }: ISliderBarProps) {
   return (
     <div className="volume-slider">
-      <VolumeIcon className="icon--18 white" />
+      <VolumeIcon className="icon--18 white" onClick={() => setProgress(0)} />
       <SliderBar progressPercent={progressPercent} setProgress={setProgress} />
     </div>
   );
